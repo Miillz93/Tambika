@@ -1,0 +1,52 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+    
+<MudGrid Class="bg_home" Style="width:100%; height: 650px; padding: 12px 0px !important; margin: 0px !important;" >
+    <MudItem xs="12" style="padding: 0px;">
+        <MudPaper Class="position-absolute mud-theme-dark" style="width: 100%; height: 639px; opacity: 0.5"></MudPaper>
+        <MudPaper Height="50%" Width="80%" class="position-absolute" style="top: 50%; left: 50%;  transform: translate(-50%, -50%); background-color: transparent;">
+            <MudText class="my-12 text-center text-white rounded-lg"Typo="Typo.h2">Find the best fit for your choice</MudText>
+            <MudAutocomplete T="string" @bind-Value="value2" SearchFunc="@Search2"
+            ResetValueOnEmptyText="@resetValueOnEmptyText"
+            CoerceText="@coerceText" CoerceValue="@coerceValue"
+            AdornmentIcon="@Icons.Material.Filled.Search" DisableUnderLine="true" AdornmentColor="Color.Primary" Variant="Variant.Outlined" style="background-color: white;" />
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code {
+    private bool resetValueOnEmptyText;
+    private bool coerceText;
+    private bool coerceValue;
+    private string value2;
+    private string[] states =
+    {
+        "Alabama", "Alaska", "American Samoa", "Arizona",
+        "Arkansas", "California", "Colorado", "Connecticut",
+        "Delaware", "District of Columbia", "Federated States of Micronesia",
+        "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
+        "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
+        "Louisiana", "Maine", "Marshall Islands", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+        "Missouri", "Montana", "Nebraska", "Nevada",
+        "New Hampshire", "New Jersey", "New Mexico", "New York",
+        "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio",
+        "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico",
+        "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
+        "Texas", "Utah", "Vermont", "Virgin Island", "Virginia",
+        "Washington", "West Virginia", "Wisconsin", "Wyoming",
+    };
+
+    private async Task<IEnumerable<string>> Search2(string value)
+    {
+        // In real life use an asynchronous function for fetching data from an api.
+        await Task.Delay(5);
+
+        // if text is null or empty, don't return values (drop-down will not open)
+        if (string.IsNullOrEmpty(value))
+            return new string[0];
+        return states.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+}

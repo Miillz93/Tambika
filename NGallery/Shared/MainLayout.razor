@@ -1,0 +1,26 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>NGallery</PageTitle>
+
+<div>
+    @* <div class="sidebar">
+        <NavMenu />
+    </div> *@
+    <header>
+        <NavBar />
+    </header>
+
+    <container>
+        @* <div class="top-row px-4 auth">
+            <LoginDisplay />
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div> *@
+
+        <div>
+            @Body
+        </div>
+    </container>
+</div>
+<MudThemeProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
