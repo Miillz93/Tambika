@@ -5,4 +5,5 @@ public class Photo {
     public int Name {get;set;}
     public int Path {get;set;}
     List<Category> Categories {get;set;}
+    public User ? user {get; set;}
 }
